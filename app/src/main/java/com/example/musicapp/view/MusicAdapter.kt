@@ -8,12 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musicapp.R
 import com.example.musicapp.model.MusicList
-import com.example.musicapp.model.MusicResponse
-import com.example.musicapp.model.SongResponse
+import com.example.musicapp.model.ResponseItem
 import com.squareup.picasso.Picasso
 
 class MusicAdapter(private val dataSet: MusicList,
-                   private val openDetails: (MusicResponse) -> Unit)
+                   private val openDetails: (ResponseItem) -> Unit)
     : RecyclerView.Adapter<MusicAdapter.MusicViewHolder>(){
 
     class MusicViewHolder(private val view: View) :
@@ -28,8 +27,8 @@ class MusicAdapter(private val dataSet: MusicList,
             view.findViewById(R.id.tv_price)
 
 
-        fun onBind(dataItem: MusicResponse,
-                   openDetails: (MusicResponse) -> Unit){
+        fun onBind(dataItem: ResponseItem,
+                   openDetails: (ResponseItem) -> Unit){
             songTitle.text = dataItem.trackName
             artistName.text = dataItem.artistName
             songPrice.text = "$"+dataItem.trackPrice.toString()

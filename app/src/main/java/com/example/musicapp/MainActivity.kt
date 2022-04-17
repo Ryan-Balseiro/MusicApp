@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         tabController.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 val position = tab.position
-                Toast.makeText(this@MainActivity, position.toString(), Toast.LENGTH_SHORT).show()
                 if (position == 1){
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.container, MusicListCFragment())

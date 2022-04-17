@@ -3,10 +3,10 @@ package com.example.musicapp.model
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
-class MusicList: ArrayList<MusicResponse>()
+class MusicList: ArrayList<ResponseItem>()
 
 @Parcelize
-data class MusicResponse(
+data class ResponseItem(
     val trackName: String,
     val artworkUrl60: String,
     val artistName: String,
@@ -14,7 +14,7 @@ data class MusicResponse(
     val previewUrl: String
 ): Parcelable
 
-data class SongResponse(
+data class JsonResponse(
     val resultCount: Int,
     val results:MusicList
 )

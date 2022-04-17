@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.musicapp.R
-import com.example.musicapp.model.SongResponse
+import com.example.musicapp.model.JsonResponse
 import com.example.musicapp.model.remote.MusicService
 import retrofit2.Call
 import retrofit2.Callback
@@ -45,7 +45,7 @@ class MusicListPFragment: Fragment() {
     }
 
     private fun initViews(view: View){
-        musicList = view.findViewById(R.id.music_list)
+        musicList = view.findViewById(R.id.rv_music_list)
         musicList.layoutManager = LinearLayoutManager(context)
         val swipeRefreshLayout = view.findViewById<SwipeRefreshLayout>(R.id.swipeContainer)
         swipeRefreshLayout?.setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener {
@@ -62,10 +62,10 @@ class MusicListPFragment: Fragment() {
     private fun getMusicPop(){
         MusicService.initRetrofit().getMusicPop()
             .enqueue(
-                object : Callback<SongResponse> {
+                object : Callback<JsonResponse> {
                     override fun onResponse(
-                        call: Call<SongResponse>,
-                        response: Response<SongResponse>
+                        call: Call<JsonResponse>,
+                        response: Response<JsonResponse>
                     ) {
                         Log.d(TAG, "onResponse: $response")
                         if (response.isSuccessful){
@@ -74,7 +74,7 @@ class MusicListPFragment: Fragment() {
                             showError(response.message())
                     }
 
-                    override fun onFailure(call: Call<SongResponse>, t: Throwable) {
+                    override fun onFailure(call: Call<JsonResponse>, t: Throwable) {
                         Log.d(TAG, "onFailure: $t")
                         showError(t.message ?: "Unknown error")
                     }
@@ -87,7 +87,7 @@ class MusicListPFragment: Fragment() {
 
     }
 
-    private fun updateAdapter(body: SongResponse?) {
+    private fun updateAdapter(body: JsonResponse?) {
         body?.let{
             it.results.let{ MusicList ->
                 adapter = MusicAdapter(MusicList) { MusicResponse ->
