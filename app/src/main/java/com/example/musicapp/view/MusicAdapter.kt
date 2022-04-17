@@ -52,7 +52,7 @@ class MusicAdapter(private val dataSet: MusicList,
     }
 
     override fun onBindViewHolder(holder: MusicViewHolder, position: Int) {
-        holder.onBind(dataSet[position], openDetails) //probably change to play song preview
+        holder.onBind(dataSet[position], openDetails)
     }
 
     override fun getItemCount(): Int {

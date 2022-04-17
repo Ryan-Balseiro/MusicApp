@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.example.musicapp.MainActivity
 import com.example.musicapp.R
 import com.example.musicapp.model.SongResponse
 import com.example.musicapp.model.remote.MusicService
@@ -46,7 +45,7 @@ class MusicListFragment: Fragment() {
     }
 
     private fun initViews(view: View) {
-        musicList = view.findViewById(R.id.movie_list)
+        musicList = view.findViewById(R.id.music_list)
         musicList.layoutManager = LinearLayoutManager(context)
 
         val swipeRefreshLayout = view.findViewById<SwipeRefreshLayout>(R.id.swipeContainer)
